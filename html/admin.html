@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="robots" content="all,follow">
+    <meta name="googlebot" content="index,follow,snippet,archive">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+    	body {display:none};
+    </style>
+
+    <title>FastMover Courier | Διαχειριστής</title>
+
+    <meta name="keywords" content="">
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Bootstrap and Font Awesome css -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <!-- Css animations  -->
+    <link href="../css/animate.css" rel="stylesheet">
+
+    <!-- Theme stylesheet, if possible do not edit this stylesheet -->
+    <link href="../css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>       
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- Favicon and apple touch icons-->
+    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="../img/icon_57x57.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="../img/icon/icon_57x57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="../img/icon/icon_72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../img/icon/icon_76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="../img/icon/icon_114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="../img/icon/icon_120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="../img/icon/icon_144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="../img/icon/icon_152x152.png" />
+
+    <script src="../js/html_credentials.js"></script>
+</head>
+
+<body>
+    <div id="all">
+        <header>
+        	<section class="bar background-pentagon no-mb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="heading text-center">
+                            <h2>Admin Page</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </section>
+        </header>
+
+        <section>
+        	<div class="container">
+        		<div class="col-md-20"> 		
+					<div class="panel panel-default panel-fade">
+						<!-- tabs kai aposundesi -->
+						<div class="panel-heading">
+							<span class="panel-title">
+								<div class="pull-left">
+									<ul class="nav nav-tabs">
+										<li class="active"><a href="#cashiers" data-toggle="tab"><i class="glyphicon glyphicon-user"></i> Υπαλληλοι Τοπικων Καταστηματων</a></li>
+										<li><a href="#stores" data-toggle="tab"><i class="glyphicon glyphicon-equalizer"></i> Καταστηματα</a></li>
+										<li><a href="#hubbers" data-toggle="tab"><i class="glyphicon glyphicon-user"></i>  Υπαλληλοι Κεντρων Διανομης</a></li>
+									</ul>
+								</div>
+								<div class="btn-group pull-right">
+									<div class="btn-group">
+										<a href="#" class="btn  dropdown-toggle" data-toggle="dropdown">
+											<span style ="font-size: 25px;" class="glyphicon glyphicon-cog"></span>
+										</a>
+										<ul class="dropdown-menu" role="menu">
+											<li><a href="../php/logout.php">Αποσυνδεση</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="clearfix"></div>
+							</span>	
+						</div>
+
+						<div class="panel-body">
+							<div class="tab-content">
+								<!-- Πινακας για τους cashiers -->	
+                                <div class="tab-pane fade in active" id="cashiers">
+	                                <div align="right">
+										<button type="button" id="add_button_cashier" data-toggle="modal" data-target="#cashierModal">
+										<i class="fa fa-plus"></i>Προσθήκη Υπαλλήλου</button>
+									</div>
+									<br>
+	            					<table id="cashiers_data" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+						                <thead>
+						                    <tr>
+						                        <th  style="text-align:center">Κωδ. Υπ</th>
+						                        <th  style="text-align:center">Όνομα</th>
+						                        <th  style="text-align:center">Επίθετο</th>
+						                        <th  style="text-align:center">Φύλο</th>
+						                        <th  style="text-align:center">Ηλικία</th>
+						                        <th  style="text-align:center">Κατ. Εργασίας</th>
+						                        <th  style="text-align:center">Username</th>
+						                        <th  style="text-align:center">Password</th>
+						                        <th  style="text-align:center">Τύπος Εργ.</th>
+						                        <th  style="text-align:center">Ενημερωση</th>
+						                        <th  style="text-align:center">Διαγραφη</th>
+						                    </tr>
+						                </thead>
+	            					</table>
+								</div>			
+								<!-- Πινακας για τα stores -->
+							    <div class="tab-pane fade" id="stores">
+									<div align="right">
+										<button type="button" id="add_button_store" data-toggle="modal" data-target="#storeModal">
+										<i class="fa fa-plus"></i>Προσθήκη Καταστήματος</button>
+									</div>
+									<br>								 
+							 		<table id="stores_data" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+						                <thead>
+						                    <tr>
+						                        <th  style="text-align:center">Κωδ. Καταστ.</th>
+						                        <th  style="text-align:center">Πόλη</th>
+						                        <th  style="text-align:center">Οδός</th>
+						                        <th  style="text-align:center">Νούμερο</th>
+						                        <th  style="text-align:center">Ταχ. Κωδ.</th>
+						                        <th  style="text-align:center">Tηλ.</th>
+						                        <th  style="text-align:center">Γεωγρ. Θέση Χ</th>
+						                        <th  style="text-align:center">Γεωγρ. Θέση Υ</th>
+						                        <th  style="text-align:center">Διασύνδεση με Hub</th>
+						                        <th  style="text-align:center">Ενημερωση</th>
+						                        <th  style="text-align:center">Διαγραφη</th>
+						                    </tr>
+						                </thead>
+					            	</table>
+								</div>
+								<!-- Πινακας για τους hubbers -->
+								<div class="tab-pane fade" id="hubbers">
+									<div align="right">
+										<button type="button" id="add_button_hubber" data-toggle="modal" data-target="#hubberModal">
+										<i class="fa fa-plus"></i>Προσθήκη Υπαλλήλου</button>
+									</div>
+									<br />								 
+							 		<table id="hubbers_data" class="table table-striped table-bordered table-hover dt-body-style-align:center"  cellspacing="0" width="100%">
+						                <thead>
+						                    <tr>
+						                        <th  style="text-align:center">Κωδ. Υπ</th>
+						                        <th  style="text-align:center">Όνομα</th>
+						                        <th  style="text-align:center">Επίθετο</th>
+						                        <th  style="text-align:center">Φύλο</th>
+						                        <th  style="text-align:center">Ηλικία</th>
+						                        <th  style="text-align:center">Hub Εργασίας</th>
+						                        <th  style="text-align:center">Username</th>
+						                        <th  style="text-align:center">Password</th>
+						                        <th  style="text-align:center">Τύπος Εργ.</th>
+						                        <th  style="text-align:center">Ενημερωση</th>
+						                        <th  style="text-align:center">Διαγραφη</th>
+						                    </tr>
+						                </thead>
+					            	</table>
+								</div>
+							</div>							
+						</div>
+					</div>						
+				</div>
+        	</div>	
+        </section>
+
+		<!--  Fade out modal for ADD a cashier START -->
+		<div id="cashierModal" class="modal fade">
+			<div class="modal-dialog">
+				<form method="post" id="cashier_form" enctype="multipart/form-data">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Προσθήκη Υπαλλήλου Τοπικού Καταστήματος</h4>
+						</div>
+						<div class="modal-body">
+							<label>Όνομα</label>
+							<div class="row">
+								<div class="col-xs-9 selectContainer">
+									<input type="text" name="name" id="name" class="form-control" />
+								</div>
+							</div>
+							<br>
+							<label>Επίθετο</label>
+							<div class="row">
+								<div class="col-xs-9 selectContainer">
+									<input type="text" name="surname" id="surname" class="form-control" />
+								</div>
+							</div>
+							<br>
+							<label>Φύλο</label>
+							<div class="form-group">
+        						<div class="col-xs-3 selectContainer">
+	            					<select name="gender" id="gender" class="form-control">
+	                					<option value="male">Άνδρας</option>
+	                					<option value="female">Γυναίκα</option>
+	            					</select>
+        						</div>
+        						<br>
+    						</div>
+							<br>
+							<label>Ηλικία</label>
+							<div class="row">
+								<div class="col-xs-2 selectContainer">
+									<input type="text" name="age" id="age" class="form-control" />
+								</div>
+							</div>
+							<br>
+							<label>Τοπικό Κατάστημα Εργασίας</label>
+							<div class="form-group">
+                                <div class="col-xs-8 selectContainer">
+                                    <select name="working_store" id="working_store" class="form-control">
+                                        <option>Διάλεξε Κατάτημα</option>
+                                    </select>
+                                </div>
+                                <br>
+                            </div>
+							<br>
+							<label>όνομα χρήστη</label>
+							<div class="row">
+								<div class="col-xs-9 selectContainer">
+									<input type="text" name="username" id="username" class="form-control" />
+								</div>
+							</div>
+							<br>
+							<label>κωδικός</label>
+							<div class="row">
+								<div class="col-xs-9 selectContainer">
+									<input type="text" name="password" id="password" class="form-control" />
+								</div>
+							</div>
+							<br>	
+						</div>
+						<div class="modal-footer">
+							<input type="hidden" name="emp_id" id="emp_id" />
+							<input type="hidden" name="operation" id="operation" />
+							<input type="submit" name="action" id="action" class="btn btn-success" value="Add" />
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Κλεισιμο</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!--  Fade out modal for ADD a cashier END -->
+
+		<!--  Fade out modal for ADD a hubber START -->
+		<div id="hubberModal" class="modal fade">
+			<div class="modal-dialog">
+				<form method="post" id="hubber_form" enctype="multipart/form-data">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Προσθήκη Υπαλλήλου Κέντρου Διανομής</h4>
+						</div>
+						<div class="modal-body">
+							<label>Όνομα</label>
+							<div class="row">
+								<div class="col-xs-9 selectContainer">
+									<input type="text" name="name_hubber" id="name_hubber" class="form-control" />
+								</div>
+							</div>
+							<br>
+							<label>Επίθετο</label>
+							<div class="row">
+								<div class="col-xs-9 selectContainer">
+									<input type="text" name="surname_hubber" id="surname_hubber" class="form-control" />
+								</div>
+							</div>
+							<br>
+							<label>Φύλο</label>
+							<div class="form-group">
+        						<div class="col-xs-3 selectContainer">
+	            					<select name="gender_hubber" id="gender_hubber" class="form-control">
+	                					<option value="male">Άνδρας</option>
+	                					<option value="female">Γυναίκα</option>
+	            					</select>
+        						</div>
+        						<br>
+    						</div>
+							<br>
+							<label>Ηλικία</label>
+							<div class="row">
+								<div class="col-xs-2 selectContainer">
+									<input type="text" name="age_hubber" id="age_hubber" class="form-control" />
+								</div>
+							</div>
+							<br>
+							<label>Κέντρο Διανομής Πακέτων</label>
+							<div class="form-group">
+                                <div class="col-xs-8 selectContainer">
+                                    <select name="working_hub_hubber" id="working_hub_hubber" class="form-control">
+                                        <option>Διάλεξε Κέντρο Διανομής</option>
+                                    </select>
+                                </div>
+                                <br>
+                            </div>
+							<br>
+							<label>όνομα χρήστη</label>
+							<div class="row">
+								<div class="col-xs-9 selectContainer">
+									<input type="text" name="username_hubber" id="username_hubber" class="form-control" />
+								</div>
+							</div>
+							<br>
+							<label>κωδικός</label>
+							<div class="row">
+								<div class="col-xs-9 selectContainer">
+									<input type="text" name="password_hubber" id="password_hubber" class="form-control" />
+								</div>
+							</div>
+							<br>
+						</div>
+						<div class="modal-footer">
+							<input type="hidden" name="emp_id_hubber" id="emp_id_hubber" />
+							<input type="hidden" name="operation_hubber" id="operation_hubber" />
+							<input type="submit" name="action_hubber" id="action_hubber" class="btn btn-success" value="Add_hubber" />
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Κλεισιμο</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!--  Fade out modal for ADD a hubber END -->
+
+		<!--  Fade out modal for ADD a store START -->
+		<div id="storeModal" class="modal fade">
+			<div class="modal-dialog">
+				<form method="post" id="store_form" enctype="multipart/form-data">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Προσθήκη Τοπικού Καταστήματος</h4>
+						</div>
+						<div class="modal-body">
+							<label>Πόλη</label>
+							<div class="row">
+								<div class="col-xs-9 selectContainer">
+									<input type="text" name="city" id="city" class="form-control" />
+								</div>
+							</div>
+							<br>
+							<label>Οδός</label>
+							<div class="row">
+								<div class="col-xs-9 selectContainer">
+									<input type="text" name="route" id="route" class="form-control" />
+								</div>
+							</div>
+							<br>
+							<label>Νούμερο Οδού</label>
+							<div class="row">
+								<div class="col-xs-2 selectContainer">
+									<input type="text" name="route_number" id="route_number" class="form-control" />
+								</div>
+							</div>
+							<br>
+							<label>Ταχυδρομικός Κώδικας</label>
+							<div class="row">
+								<div class="col-xs-9 selectContainer">
+									<input type="text" name="TK" id="TK" class="form-control" />
+								</div>
+							</div>
+							<br>
+							<label>Τηλέφωνο Επικοινωνίας</label>
+							<div class="row">
+								<div class="col-xs-9 selectContainer">
+									<input type="text" name="phone_number" id="phone_number" class="form-control" />
+								</div>
+							</div>
+							<br>
+							<label>Γεωγραφική Θέση X</label>
+							<div class="row">
+								<div class="col-xs-5 selectContainer">
+									<input type="text" name="geo_x" id="geo_x" class="form-control" />
+								</div>
+							</div>
+							<br>
+							<label>Γεωγραφική Θέση Y</label>
+							<div class="row">
+								<div class="col-xs-5 selectContainer">
+									<input type="text" name="geo_y" id="geo_y" class="form-control" />
+								</div>
+							</div>
+							<br>
+							<label>Διασυνδεμένο Κέντρο Διανομής</label>
+							<div class="form-group">
+                                <div class="col-xs-8 selectContainer">
+                                    <select name="hub_id" id="hub_id" class="form-control">
+                                        <option>Διάλεξε Κέντρο Διανομής</option>
+                                    </select>
+                                </div>
+                                <br>
+                            </div>
+							<br>
+						</div>
+						<div class="modal-footer">
+							<input type="hidden" name="store_id" id="store_id" />
+							<input type="hidden" name="operation_store" id="operation_store" />
+							<input type="submit" name="action_store" id="action_store" class="btn btn-success" value="Add_store" />
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Κλεισιμο</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!--  Fade out modal for ADD a store END -->
+
+		<script src="../js/show_tables.js"></script>
+           
+
+        <!-- *** COPYRIGHT ***
+_________________________________________________________ -->
+
+        <div id="copyright">
+            <div class="container">
+                <div class="col-md-12">
+                    <p class="pull-left">&copy; 2017-2018.  <a href="https://www.linkedin.com/in/efthimis-kostis/" target="_blank">Eftimis Kostis</a>
+                    & <a href="https://www.facebook.com/giorgos.karteris.21" target="_blank">Giorgos Karteris</a></p>
+                    <p class="pull-right">Template by <a href="https://bootstrapious.com" target="_blank">Bootstrapious</a> & <a href="https://remoteplease.com" target="_blank">Remote Please</a>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+        <!-- /#copyright -->
+
+        <!-- *** COPYRIGHT END *** -->
+
+    </div>
+    <!-- /#all -->
+
+    <!-- #### JAVASCRIPT FILES ### -->
+
+    <script src="../js/jquery.cookie.js"></script>
+    <script src="../js/waypoints.min.js"></script>
+    <script src="../js/jquery.counterup.min.js"></script>
+    <script src="../js/jquery.parallax-1.1.3.js"></script>
+    <script src="../js/front.js"></script>
+</body>
+
+</html>

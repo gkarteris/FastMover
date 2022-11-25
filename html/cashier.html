@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="robots" content="all,follow">
+    <meta name="googlebot" content="index,follow,snippet,archive">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+    	body {display:none};
+    </style>
+    
+        
+    <title>FastMover Courier | Υπάλληλος</title>
+
+    <meta name="keywords" content="">
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Bootstrap and Font Awesome css -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">   
+   
+
+    <!-- Css animations  -->
+    <link href="../css/animate.css" rel="stylesheet">
+
+    <!-- Theme stylesheet, if possible do not edit this stylesheet -->
+    <link href="../css/style.violet.css" rel="stylesheet" id="theme-stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>       
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- Favicon and apple touch icons-->
+    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="../img/icon_57x57.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="../img/icon/icon_57x57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="../img/icon/icon_72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../img/icon/icon_76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="../img/icon/icon_114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="../img/icon/icon_120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="../img/icon/icon_144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="../img/icon/icon_152x152.png" />
+
+    <script src="../js/html_credentials.js"></script>
+</head>
+
+<body>
+    <div id="all">
+        <header>
+        	<section class="bar background-pentagon no-mb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="heading text-center">
+                            <h2>Cashier Page</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </section>
+        </header>
+        <section>
+        	<div class="container">
+        		<div class="col-md-10"> 		
+					<div class="panel panel-default panel-fade">					
+						<div class="panel-heading">					   
+							<span class="panel-title">							
+								<div class="pull-left">								
+									<ul class="nav nav-tabs">
+										<li class="active"><a href="#boxes" data-toggle="tab"><i class="glyphicon glyphicon-user"></i> Τρεχων Παραγγελιες</a></li>
+										<li><a href="#order_cost" data-toggle="tab"><i class="glyphicon glyphicon-user"></i> Υπολογισμος Κοστους</a></li>
+									</ul>									
+								</div>								
+								<div class="btn-group pull-right">
+									<div class="btn-group">
+										<a href="#" class="btn dropdown-toggle" data-toggle="dropdown">
+											<span style ="font-size: 25px;" class="glyphicon glyphicon-cog"></span>
+										</a>
+										<ul class="dropdown-menu" role="menu">
+											<li><a href="../php/logout.php">Αποσυνδεση</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="clearfix"></div>
+							</span>							
+						</div>
+						<div class="panel-body">
+							<!-- Πινακας για τα κουτια -->
+							<div class="tab-content">		
+                                <div class="tab-pane fade in active" id="boxes">
+	                                <div align="right">
+										<button type="button" id="add_button_box" data-toggle="modal" data-target="#boxModal"><i class="fa fa-plus"></i>Νέα παραγγελία</button>
+									</div>
+									<br />
+	            					<table id="boxes_data" class="table table-striped table-bordered table-hover" cellspacing="0">
+						                <thead>
+						                    <tr>
+						                        <th  width="2%" style="text-align:center">Κωδ. Παραγ.</th>
+						                        <th  width="3%" style="text-align:center">Tracking Number</th>
+						                        <th  width="3%" style="text-align:center">Αποστολέας</th>
+						                        <th  width="3%" style="text-align:center">Παραλήπτης</th>
+						                        <th  width="5%" style="text-align:center">Οδός Παραλήπτη</th>
+						                        <th  width="2%" style="text-align:center">Αφετηρία</th>
+						                        <th  width="2%" style="text-align:center">Προορισμός</th>
+						                        <th  width="5%" style="text-align:center">Τύπος Αποστ.</th>
+						                        <th  width="2%" style="text-align:center">Κόστος</th>
+						                        <th  width="1%" style="text-align:center">Παραδόθηκε</th>
+						                        <th  width="2%" style="text-align:center">Πληροφορίες</th>
+						                        <th  width="2%" style="text-align:center">Διαγραφή</th>
+						                    </tr>
+						                </thead>
+	            					</table>
+								</div>
+								<!--  2ο tab για υπολογισμο κοστους START-->
+								<div class="tab-pane fade" id="order_cost">
+									<div class="container">
+										<div class="col-xs-5">
+											<form method="post" id="box_cost_form" enctype="multipart/form-data">
+				                                <label>Αφετηρία</label>
+				                                <div class="form-group">
+				                                    <div class="col-xs-8 selectContainer">
+				                                        <select name="starting_store_id" id="starting_store_id" class="form-control">
+				                                            <option>Διάλεξε Αφετηρία</option>
+				                                        </select>
+				                                    </div>
+				                                </div>
+				                                <br>
+				                                <br>
+				                                <label>Προορισμός</label>
+				                                <div class="form-group">
+				                                    <div class="col-xs-8 selectContainer">
+				                                        <select name="final_store_id" id="final_store_id" class="form-control">
+				                                            <option>Διάλεξε Προορισμό</option>
+				                                        </select>
+				                                    </div>
+				                                </div>
+				                                <br>
+				                                <br>
+				                                <label>Τύπος Αποστολής</label>
+				                                <div class="form-group">
+				                                    <div class="col-xs-4 selectContainer">
+				                                        <select name="delivery_type" id="delivery_type" class="form-control">
+				                                            <option value="regular">Απλή</option>
+				                                            <option value="express">Γρήγορη</option>
+				                                        </select>
+				                                    </div>
+				                                </div>
+				                                <br>                                  
+				                                <br>
+				                                <button type="submit" name="button_confirm" id="button_confirm" class="btn btn-template-main">ΟΛΟΚΛΗΡΩΣΗ <i class="fa fa-check"></i></button>
+	                            			</form>
+										</div>
+										<div class="col-xs-6">
+											<div id="returned_cost"></div>
+										</div>
+									</div>
+								</div>
+								<!--  2ο tab για υπολογισμο κοστους END-->
+							</div>							
+						</div>
+					</div>						
+				</div>
+        	</div>
+        </section>
+
+		<!--  Fade out modal for ADD a box START -->
+		<div id="boxModal" class="modal fade">
+			<div class="modal-dialog">
+				<form method="post" id="box_form" enctype="multipart/form-data">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Δημιούργησε Νέα Παραγγελία</h4>
+						</div>
+						<div class="modal-body">
+							<label>Αποστολέας</label>
+							<div class="row">
+								<div class="col-xs-9 selectContainer">
+									<input type="text" name="name_sender" id="name_sender" class="form-control" />
+								</div>
+							</div>
+							<br>
+							<label>Παραλήπτης</label>
+							<div class="row">
+								<div class="col-xs-9 selectContainer">
+									<input type="text" name="name_receiver" id="name_receiver" class="form-control" />
+								</div>
+							</div>
+							<br>
+							<label>Οδός Παραλήπτη</label>
+							<div class="row">
+								<div class="col-xs-9 selectContainer">
+									<input type="text" name="route_receiver" id="route_receiver" class="form-control" />
+								</div>
+							</div>
+							<br>
+							<label>Προορισμός (Τοπικό Κατάστημα)</label>
+							<div class="form-group">
+        						<div class="col-xs-6 selectContainer">
+	        						<select name="destination_store" id="destination_store" class="form-control">
+									</select>
+        						</div>
+        						<br>
+    						</div>
+							<br>
+							<label>Τύπος Αποστολής</label>
+							<div class="form-group">
+        						<div class="col-xs-3 selectContainer">
+	            					<select name="delivery_type" id="delivery_type" class="form-control">
+	                					<option value="regular">Απλή</option>
+	                					<option value="express">Γρήγορη</option>
+	            					</select>
+        						</div>
+    						</div>
+							<br>							
+						</div>
+						<div class="modal-footer">
+							<input type="hidden" name="box_id" id="box_id" />
+							<input type="hidden" name="operation" id="operation" />
+							<input type="submit" name="action" id="action" class="btn btn-success" value="Ολοκληρωση" />
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Κλεισιμο</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!--  Fade out modal for ADD a box END -->
+
+		<!--  Fade out modal for More INFO a box START -->
+		<div id="boxModal2" class="modal fade" role="dialog">
+			<section>
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Περαιτέρω Πληροφορίες Παραγγελίας</h4>
+						</div>
+						<div class="modal-body">
+							<center>
+								<img id="QRImg" alt="image missing">
+							</center>		
+						</div>
+						<div id="hub_schedule_list"></div>
+						<div class="modal-footer">
+							<center>
+								<label>Αφετηρία</label>
+								<input type="text" name="afetiria" id="afetiria" class="form-control" readonly="readonly" />
+								<br>
+								<label>Προορισμός</label>
+								<input type="text" name="proorismos" id="proorismos" class="form-control" readonly="readonly" />
+								<br>
+							</center>
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Κλεισιμο</button>
+						</div>
+					</div>
+				</div>
+			</section>	
+		</div>
+		<!--  Fade out modal for ADD a box END -->
+
+		<script src="../js/show_boxes.js"></script>
+		<script src="../js/show_cost.js"></script>
+   
+
+   		<section class="bar background-white no-mb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- *** COPYRIGHT ***
+_________________________________________________________ -->
+
+        <div id="copyright">
+            <div class="container">
+                <div class="col-md-12">
+                    <p class="pull-left">&copy; 2017-2018.  <a href="https://www.linkedin.com/in/efthimis-kostis/" target="_blank">Eftimis Kostis</a>
+                    & <a href="https://www.facebook.com/giorgos.karteris.21" target="_blank">Giorgos Karteris</a></p>
+                    <p class="pull-right">Template by <a href="https://bootstrapious.com" target="_blank">Bootstrapious</a> & <a href="https://remoteplease.com" target="_blank">Remote Please</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- /#copyright -->
+
+        <!-- *** COPYRIGHT END *** -->
+    </div>
+    <!-- /#all -->
+
+
+
+    <!-- #### JAVASCRIPT FILES ### -->
+
+    <script src="../js/jquery.cookie.js"></script>
+    <script src="../js/waypoints.min.js"></script>
+    <script src="../js/jquery.counterup.min.js"></script>
+    <script src="../js/jquery.parallax-1.1.3.js"></script>
+    <script src="../js/front.js"></script>
+</body>
+
+</html>
